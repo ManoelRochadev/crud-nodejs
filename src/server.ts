@@ -1,25 +1,26 @@
-import express from "express";
-require("dotenv").config();
+require('dotenv').config()
+import express from 'express'
+import mongoose from 'mongoose'
+import { routes } from './routes'
 
-const app = express();
+const app = express()
 
-app.use(express.json());
+app.use(express.json())
+
+app.use(routes)
+
+const dbUser = process.env.DB_USER
+const dbPassword = process.env.DB_PASS
+const mongoHost = 'containers-us-west-54.railway.app'
+const mongoPort = 6792
+
+mongoose
+  .connect(`mongodb://${dbUser}:${dbPassword}@${mongoHost}:${mongoPort}`)
+  .then(() => {
+    console.log('Connected to database!')
+  })
+  .catch(err => console.log(err))
 
 app.listen(3333, () => {
-  console.log("Server is running on port 3333");
-})
-
-app.get("/", (req, res) => {
-  res.json({ message: "Hello World" });
-});
-
-app.post("/users", (req, res) => {
-  const { name, email } = req.body;
-
-  const user = {
-    name,
-    email,
-  };
-
-  return res.status(201).send;
+  console.log('Server started on port 3333')
 })

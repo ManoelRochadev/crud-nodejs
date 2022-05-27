@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/server.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Manoel Rocha",

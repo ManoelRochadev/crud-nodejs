@@ -2,6 +2,7 @@ require('dotenv').config()
 import express from 'express'
 import mongoose from 'mongoose'
 import { routes } from './routes'
+import cors from 'cors'
 
 const app = express()
 
@@ -26,7 +27,5 @@ mongoose
 app.listen(process.env.PORT || 3333, () => {
   console.log('Server started')
 })
-function cors(): any {
-  throw new Error('Function not implemented.')
-}
+
 

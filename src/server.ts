@@ -5,6 +5,8 @@ import { routes } from './routes'
 
 const app = express()
 
+app.use(cors())
+
 app.use(express.json())
 
 app.use(routes)
@@ -24,3 +26,7 @@ mongoose
 app.listen(process.env.PORT || 3333, () => {
   console.log('Server started')
 })
+function cors(): any {
+  throw new Error('Function not implemented.')
+}
+
